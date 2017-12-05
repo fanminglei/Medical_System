@@ -1,0 +1,11 @@
+本包中写控制层代码
+例如：
+@RequestMapping("/bookDetail")
+	public String selectbook(Book book,Model model){
+		System.out.println(book.getId());
+		List<Book> list=bookService.selectbook(book);
+		System.out.println(list);
+		model.addAttribute("books", list);
+		return "bookDetail";
+	}
+	调用数据库操作，对每个实体类都需要有一个类对应

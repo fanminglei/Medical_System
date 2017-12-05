@@ -1,0 +1,31 @@
+本包写mybatis的映射文件，一个表对应一个，相应的对应的表d操作方法，增删改查等
+例子：xml格式配置文件
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haina.dao.BookDao">
+
+	<resultMap type="Book" id="BookResult">
+		<result property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="publish" column="publish"/>
+		<result property="price" column="price"/>
+		<result property="leftcount" column="leftcount"/>
+		<result property="author" column="author"/>
+		<result property="url" column="url"/>
+		<result property="jifen" column="jifen"/>
+		<result property="discount" column="discount"/>
+	</resultMap>
+
+	<select id="bookCount" resultType="Integer">
+		select count(*) from book
+	</select>
+	<select id="bookList" parameterType="Map" resultMap="BookResult">
+	select * from book limit #{begin},#{pagesize}
+	</select>
+	<select id="selectbook" parameterType="Integer" resultMap="BookResult">
+	select * from book where id=#{id}
+	</select>
+
+</mapper> 

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>    
+<beans xmlns="http://www.springframework.org/schema/beans"    
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:aop="http://www.springframework.org/schema/aop"  
+    xmlns:mvc="http://www.springframework.org/schema/mvc" 
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:jee="http://www.springframework.org/schema/jee"  
+    xmlns:tx="http://www.springframework.org/schema/tx"  
+    xsi:schemaLocation="    
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd  
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd  
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd 
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+        http://www.springframework.org/schema/mvc    
+                        http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd"> 
+
+	<!-- 使用注解的包，包括子集 -->
+	<context:component-scan base-package="com_controller" />
+	<!-- 因为jsp被放入了web-inf不能直接访问，所以需要给每个jsp配置访问路径，下面配置方式，地址栏输入http://localhost:8080/MybatisPro05/login.do
+	就会请求到一个view的名字叫做login，springmvc会话login这个视图的逻辑名，前面加上前缀jsp，后缀是.jsp就找到我们的位于web-inf/jsp/login.jsp
+	给7个jsp每一个配置一个请求路径 -->
+<!-- 	<mvc:view-controller path="/login" view-name="login"/> -->
+<!-- 	<mvc:view-controller path="/addOrder" view-name="addOrder"/> -->
+<!-- 	<mvc:view-controller path="/bookDetail" view-name="bookDetail"/> -->
+<!-- 	<mvc:view-controller path="/bookList" view-name="bookList"/> -->
+<!-- 	<mvc:view-controller path="/cart" view-name="cart"/> -->
+<!-- 	<mvc:view-controller path="/pay" view-name="pay"/> -->
+<!-- 	<mvc:view-controller path="/add" view-name="add"/> -->
+	<!-- 视图解析器 -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+
+</beans>  

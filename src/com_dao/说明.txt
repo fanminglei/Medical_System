@@ -1,0 +1,8 @@
+本包中写操作数据库抽象类，只有定义，没有实现
+例如：
+public interface BookDao {
+	int bookCount();
+	List<Book> bookList(Map<String,Object> map);
+	List<Book> selectbook(int id);
+}
+一个表对应一个
